@@ -90,3 +90,15 @@ jobs:
           author_name: Revolt CI
           author_email: revolt-ci@users.noreply.github.com
           message: "chore: generate OpenAPI specification"
+
+      - name: Run cargo fmt
+        if: github.event_name == 'pull_request'
+        run: cargo fmt
+
+      - name: Commit changes
+        if: github.event_name == 'pull_request'
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: Revolt CI
+          author_email: revolt-ci@users.noreply.github.com
+          message: "chore: cargo fmt"
